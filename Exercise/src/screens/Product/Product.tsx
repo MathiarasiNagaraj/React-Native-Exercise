@@ -1,8 +1,8 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 
 export const Product = () => {
   return (
-<View>Procut</View>
+<View><Text>Product Page</Text></View>
   )
 }
