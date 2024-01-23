@@ -1,10 +1,24 @@
-import React from 'react'
-import { View } from 'react-native'
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import NavItem from '../../components/NavItem/NavItem';
+import {CATEGORY} from '../../constants/routeConstants';
 
-const Navbar = () => {
-  return (
-<View></View>
-  )
-}
+const Navbar = ({selectedCategory}) => {
 
-export default Navbar
+  const navItems = CATEGORY.map(category => (
+    <NavItem key={category} title={category} onClick={()=>selectedCategory(category)} />
+  ));
+
+  return <View style={styles.navBar}>{navItems}</View>;
+};
+
+const styles = StyleSheet.create({
+  navBar: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    padding:20
+  },
+});
+export default Navbar;
