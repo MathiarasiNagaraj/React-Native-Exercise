@@ -1,31 +1,44 @@
 import axios from 'axios';
-import { routes } from '../constants/routeConstants';
+import {routes} from '../constants/routeConstants';
 
 export const getProductsByCategory = async (category: string) => {
-    try {
-      const productLink = routes[category].productLink.trim();
-      console.log(productLink);
-      console.log(category);
-  
-      const response = await fetch(productLink);
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log(data, 'response');
-  
-      return data;
-    } catch (error) {
-      console.error('Error fetching data:', error.message);
-      throw error;
+  try {
+    const productLink = routes[category].productLink.trim();
+   
+
+    const response = await fetch(productLink);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-  };
-  
-  
+
+    const data = await response.json();
+
+
+    return data;
+  } catch (error) {
+
+    throw error;
+  }
+};
+
 export const getOffersByCategory = async (category: string) => {
-    const response = await axios.get(routes[category].offerLink);
-    return response.data;
-    
-}
+  try {
+    const productLink = routes[category].offerLink.trim();
+   
+
+    const response = await fetch(productLink);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+
+    return data;
+  } catch (error) {
+
+    throw error;
+  }
+};

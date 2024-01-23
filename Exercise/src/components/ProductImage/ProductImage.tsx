@@ -1,9 +1,10 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Image, View } from 'react-native'
 
-const ProductImage = () => {
+const ProductImage = ({ img }) => {
+
   return (
-<View></View>
+    <Image source={{ uri: img.modelImg }} style={{height:100,width:200}} />
   )
 }
 

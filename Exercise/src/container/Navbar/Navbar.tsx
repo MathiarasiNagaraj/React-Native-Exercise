@@ -15,7 +15,8 @@ const Navbar = ({selectedCategory}) => {
 const styles = StyleSheet.create({
   navBar: {
     display: 'flex',
-    justifyContent: 'space-around',
+    rowGap: 10,
+   columnGap:50,
     flexDirection: 'row',
     backgroundColor: 'white',
     padding:20

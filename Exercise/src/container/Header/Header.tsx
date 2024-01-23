@@ -8,7 +8,7 @@ export const Header = () => {
           <Text style={styles.title}>
               {TITLE}
       </Text>
-      <Image source={require('../../assets/images/icons/shoppingCart.svg')} style={ styles.img} />
+      <Image source={require('../../assets/images/icons/shoppingCart.svg')} />
      
  </View>
   )
@@ -26,10 +26,5 @@ justifyContent:'space-between'
     fontWeight: "700",
     color:'#000000'
   },
-  img:{
-    height: 100,
-    width: 100,
-   // backgroundColor: '#000000',
-    //color:'#ffffff'
-  }
+  
 })
