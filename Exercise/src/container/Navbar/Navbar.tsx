@@ -9,7 +9,7 @@ const Navbar = ({selectedCategory}) => {
     <NavItem key={category} title={category} onClick={()=>selectedCategory(category)} />
   ));
 
-  return <View style={styles.navBar}>{navItems}</View>;
+  return <View style={styles.navBar}>{navItems}</View>
 };
 
 const styles = StyleSheet.create({
