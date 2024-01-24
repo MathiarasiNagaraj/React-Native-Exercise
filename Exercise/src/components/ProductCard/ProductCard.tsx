@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {Button, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const ProductCard = ({detail}) => {
   return (
@@ -17,6 +17,7 @@ const ProductCard = ({detail}) => {
           <Text style={styles.text}>{detail.discountSlogan}</Text>
         </View>
       </View>
+     
     </SafeAreaView>
   );
 };
@@ -32,6 +33,14 @@ const styles = StyleSheet.create({
     margin: 15,
     marginTop: 0,
     position: 'relative',
+  },
+  btn:{},
+  bottomWrapper: {
+    height: 150,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   container: {
     position: 'absolute',

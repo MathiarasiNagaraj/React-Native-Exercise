@@ -6,7 +6,6 @@ const ProductImage = ({ detail }) => {
   const navigation = useNavigation();
 
   const handleProductClick = () => {
-console.log('hi')
     navigation.navigate('Product', { detail: detail });
   };
   return (

@@ -6,10 +6,10 @@
     </defs>
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="icon/image/switch_camera_24px">
-            <mask id="mask-2" fill="white">
+            <mask id="mask-2" fill="black">
                 <use xlink:href="#path-1"></use>
             </mask>
-            <use fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <use fill="#111111" fill-rule="nonzero" xlink:href="#path-1"></use>
         </g>
     </g>
 </svg>
