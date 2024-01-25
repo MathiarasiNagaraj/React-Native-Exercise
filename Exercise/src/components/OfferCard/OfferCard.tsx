@@ -13,7 +13,7 @@ const OfferCard: React.FC<OfferProps> = ({detail}) => {
     <View style={styles.card}>
       <Image source={{uri: detail.modelImg}} style={styles.img} />
       <View style={styles.textWrapper}>
-        <Text style={[globalStyles.bold,globalStyles.whiteText]}>{detail.discountText}</Text>
+        <Text style={[globalStyles.bolderText,globalStyles.whiteText]}>{detail.discountText}</Text>
         <View style={styles.horizontalLine} />
         <View >
           <Text style={[globalStyles.whiteText,globalStyles.mediumText]}>

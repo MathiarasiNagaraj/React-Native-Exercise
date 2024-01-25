@@ -1,12 +1,21 @@
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import { Product } from '../../interface/Products';
 
-const ProductImage = ({ detail }) => {
+/**
+ * @description Product Image component
+ * @param detail Product details
+ * @returns Product Image
+ */
+interface ProductImageProps {
+  detail: Product;
+}
+const ProductImage :React.FC<ProductImageProps>= ({detail}) => {
   const navigation = useNavigation();
 
   const handleProductClick = () => {
-    navigation.navigate('Product', { detail: detail });
+    navigation.navigate('Product', {detail: detail});
   };
   return (
     <TouchableOpacity onPress={handleProductClick}>
@@ -19,9 +28,9 @@ export default ProductImage;
 
 const styles = StyleSheet.create({
   img: {
-    height: 170,
-    width: 150,
-    margin: 10,
+    height: 150,
+    width: 130,
+    marginHorizontal: 10,
     borderRadius: 10,
   },
 });

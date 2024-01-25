@@ -1,6 +1,6 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
 import ProductCard from '../../components/OfferCard/OfferCard';
 import ProductImage from '../../components/ProductImage/ProductImage';
 import { CATEGORY } from '../../constants/routeConstants';
@@ -12,6 +12,7 @@ import {
   getOffersByCategory,
   getProductsByCategory
 } from '../../services/ProductApi';
+import { colors } from '../../styles/colors';
 import {  globalStyles } from '../../styles/globalStyle';
 
 /**
@@ -50,27 +51,31 @@ export const Home = () => {
   );
 
   return (
-    <View style={globalStyles.container}>
+    <ScrollView style={globalStyles.container}>
       <Header />
-<OfferSection offers={selectedOffers}/>
-      <Text style={styles.bold}>{HOME.POPULAR_PRODUCTS.title}</Text>
-      <View style={styles.wrapper}>{products}</View>
-    </View>
+      <OfferSection offers={selectedOffers} />
+      <View style={styles.SectionWrapper}>
+      <Text style={styles.title}>{HOME.POPULAR_PRODUCTS.title}</Text>
+        <View style={styles.wrapper}>{products}</View>
+        </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-
+  SectionWrapper: {
+    paddingVertical:20
+  },
   wrapper: {
     paddingTop: 20,
     paddingBottom: 20,
-    paddingRight: 20,
-    backgroundColor: '#f0f0f0',
+    paddingRight: 25,
+marginLeft:20
   },
-  bold: {
+ title: {
     fontSize: 23,
-    fontWeight: '500',
-    color: '#111111',
+    fontWeight: '600',
+    color: colors.black,
+    paddingHorizontal:25
   },
-  product: {},
 });

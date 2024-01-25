@@ -27,11 +27,17 @@ export const globalStyles = StyleSheet.create({
   },
   underLinedText: {
     textDecorationLine: 'underline',
-  },
-  bold: {
+    },
+
+  bolderText: {
     fontSize: 30,
     fontWeight: '900',
   },
+  boldText: {
+    fontSize: 26,
+    fontWeight: '800',
+    },
+  
   primaryBtn: {
     backgroundColor: colors.black,
     borderRadius: 10,

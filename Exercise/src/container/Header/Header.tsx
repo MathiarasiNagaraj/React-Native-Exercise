@@ -1,26 +1,32 @@
 import React from 'react';
-import {Image, Text, View, StyleSheet, SafeAreaView} from 'react-native';
+import {Text, StyleSheet, SafeAreaView} from 'react-native';
 import {TITLE} from '../../constants/commonConstants';
 import Cart from '../../components/Cart/Cart';
+import { colors } from '../../styles/colors';
+/**
+ * @description Header Component of the app
+ * @returns Header Component of the app
+ */
 export const Header = () => {
   return (
-    <SafeAreaView style={styles.flex}>
+    <SafeAreaView style={styles.wrapper}>
       <Text style={styles.title}>{TITLE}</Text>
-    <Cart/>
+      <Cart />
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
-  flex: {
-    display: 'flex',
+  wrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#ffffff',
-    padding: 20,
+    alignItems:'center',
+    backgroundColor: colors.white,
+    padding: 25,
   },
   title: {
-    fontSize: 23,
-    fontWeight: '700',
-    color: '#000000',
-  },
+    fontWeight: '900',
+    fontSize: 27,
+    color:colors.black
+  }
+  
 });
