@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   Button,
   FlatList,
@@ -12,6 +12,7 @@ import ProductImage from '../../components/ProductImage/ProductImage';
 import {CATEGORY} from '../../constants/routeConstants';
 import {Header} from '../../container/Header/Header';
 import Navbar from '../../container/Navbar/Navbar';
+import { CartContext } from '../../context/CartContext';
 import {
   getOffersByCategory,
   getProductsByCategory,
@@ -21,7 +22,7 @@ import {
 export const Home = ({navigation}) => {
   const [selectedProduct, setSelectedProduct] = useState([]);
   const [selectedOffer, setSelectedOffer] = useState([]);
-
+  const { cartCount } = useContext(CartContext);
   useEffect(() => {
     const getMethod = async () => {
       const data = await getProductsByCategory(CATEGORY[0]);
@@ -61,7 +62,7 @@ export const Home = ({navigation}) => {
     <ScrollView style={styles.container}>
       <Header />
       <Navbar selectedCategory={onCategoryChange} />
-
+      <Text>{ cartCount}</Text>
       <View style={styles.wrapper}>{Offers}</View>
 
       <Text style={styles.bold}>Most Popular Product</Text>
