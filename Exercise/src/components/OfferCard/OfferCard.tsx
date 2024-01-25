@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Platform, StyleSheet, Text, View} from 'react-native';
 import {Offer} from '../../interface/Products';
 import { HOME } from '../../messages/CommonMessages';
 import { colors } from '../../styles/colors';
@@ -10,7 +10,7 @@ interface OfferProps {
 }
 const OfferCard: React.FC<OfferProps> = ({detail}) => {
   return (
-    <View style={styles.card}>
+    <View style={[styles.card,styles.elevation]}>
       <Image source={{uri: detail.modelImg}} style={styles.img} />
       <View style={styles.textWrapper}>
         <Text style={[globalStyles.bolderText,globalStyles.whiteText]}>{detail.discountText}</Text>
@@ -37,8 +37,23 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: 0,
     position: 'relative',
+    ...Platform.select({
+      android: {
+        elevation: 5,
+        shadowColor: '#111',
+      },
+      ios: {
+        shadowColor: 'rgba(100, 100, 111, 0.2)',
+        shadowOffset: { width: 0, height: 7 },
+        shadowOpacity: 1,
+        shadowRadius: 29,
+      },
+    }),
   },
-  
+  elevation: {
+    elevation: 20,
+    shadowColor: '#52006A',
+  },
   img: {
     position: 'absolute',
     height: '100%',

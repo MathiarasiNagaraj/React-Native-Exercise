@@ -8,7 +8,9 @@ export const globalStyles = StyleSheet.create({
   },
 
   text: {
+    fontSize: 17,
     color: colors.black,
+    fontWeight: '600',
   },
   whiteText: {
     color: colors.white,
@@ -27,7 +29,7 @@ export const globalStyles = StyleSheet.create({
   },
   underLinedText: {
     textDecorationLine: 'underline',
-    },
+  },
 
   bolderText: {
     fontSize: 30,
@@ -36,14 +38,14 @@ export const globalStyles = StyleSheet.create({
   boldText: {
     fontSize: 26,
     fontWeight: '800',
-    },
-  
+  },
+
   primaryBtn: {
     backgroundColor: colors.black,
-    borderRadius: 10,
+    borderRadius: 7,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40,
-    width: 140,
+    height: 60,
+    width: 220,
   },
 });

@@ -10,19 +10,27 @@ import {
   View,
 } from 'react-native';
 
-import StarSVG from '../../assets/images/icons/star.svg';
-import HeartSVG from '../../assets/images/icons/heart.svg';
+import {useContext, useMemo} from 'react';
 import DressHangerSVG from '../../assets/images/icons/dressHanger.svg';
+import HeartSVG from '../../assets/images/icons/heart.svg';
 import LeftArrowSVG from '../../assets/images/icons/leftArrow.svg';
-import {useContext, useMemo, useRef} from 'react';
-import { CartContext } from '../../context/CartContext';
+import StarSVG from '../../assets/images/icons/star.svg';
 import Cart from '../../components/Cart/Cart';
-import BottomNavigator from '../../components/BottomNavigator/BottomNavigator';
+import {CartContext} from '../../context/CartContext';
+import {colors} from '../../styles/colors';
+import {globalStyles} from '../../styles/globalStyle';
+import {HOME} from '../../messages/CommonMessages';
+import { useNavigation } from '@react-navigation/native';
 
 export const Product = ({route}) => {
-  const { detail } = route.params;
-  const snapPoints = useMemo(() => ['20%', '50%'], []);
+  const {detail} = route.params;
+  const snapPoints = useMemo(() => ['40%', '60%'], []);
   const { addToCart } = useContext(CartContext);
+  const navigation = useNavigation();
+
+  const handleBackClick = () => {
+    navigation.navigate('Home');
+  };
   const sizes = (
     <FlatList
       horizontal
@@ -35,175 +43,78 @@ export const Product = ({route}) => {
 
   const onAddToCartHandler = () => {
     addToCart(detail.id);
- }
+  };
 
   return (
     <SafeAreaView>
-      <ScrollView>
-        <View style={styles.imgContainer}>
+      <ScrollView style={{position:'relative',backgroundColor:'pink'}}>
+        <View>
           <Image style={styles.img} source={{uri: detail.modelImg}} />
-
-          <View style={styles.iconWrappers}>
-            <LeftArrowSVG style={styles.icon} />
-          </View>
-          <View style={styles.iconWrappers2}>
-<Cart/>
+          <View style={styles.iconWrapper}>
+            <TouchableOpacity onPress={handleBackClick}>
+            <View style={styles.icon}>
+              <LeftArrowSVG />
+              </View>
+              </TouchableOpacity>
+            <View style={styles.icon}>
+              <Cart />
+            </View>
           </View>
         </View>
-        <BottomSheet snapPoints={snapPoints}>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>{detail.product_name}</Text>
-          <View style={styles.priceWrapper}>
-            <View>
-              <Text style={styles.orangeText}>
-                {detail.price_details.currency_code}
-                {detail.price_details.current_price}
-              </Text>
-              <Text>
-                <Text style={styles.strikeText}>
-                  {' '}
-                  RM {detail.price_details.actual_price}{' '}
+        {/* <BottomSheet style={{backgroundColor: 'red'}} snapPoints={snapPoints}> */}
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{detail.product_name}</Text>
+            <View style={styles.priceWrapper}>
+              <View>
+                <Text style={styles.orangeText}>
+                  {detail.price_details.currency_code}
+                  {detail.price_details.current_price}
                 </Text>
-                <Text>{detail.price_details.discount} OFF</Text>
-              </Text>
-            </View>
-            <View>
-              <StarSVG style={styles.icon} />
-              <Text>
-                {detail.rating_details.rating}/{detail.rating_details.scale}
-              </Text>
+                <Text>
+                  <Text style={styles.strikeText}>
+                    {HOME.POPULAR_PRODUCTS.RM}{' '}
+                    {detail.price_details.actual_price}{' '}
+                  </Text>
+                  <Text style={globalStyles.text}>
+                    {detail.price_details.discount} OFF
+                  </Text>
+                </Text>
+              </View>
+              <View>
+                <StarSVG style={styles.Rating} />
+                <Text style={styles.Rating}>
+                  {detail.rating_details.rating}/{detail.rating_details.scale}
+                </Text>
+              </View>
             </View>
           </View>
           <View style={styles.sizeWrapper}>
-            <Text style={styles.text}>Size Availabe:</Text>
+            <Text style={styles.text}>
+              {HOME.POPULAR_PRODUCTS.availableSizes}
+            </Text>
             {sizes}
           </View>
-        </View>
-      
-       
-     </BottomSheet>
+        {/* </BottomSheet> */}
         <View style={styles.bottomWrapper}>
-          <View style={styles.iconWrapper}>
-            <HeartSVG style={styles.icon} />
+          <View style={styles.greyIcon}>
+            <HeartSVG height={30} width={28} />
           </View>
-          <View style={styles.iconWrapper}>
-            <DressHangerSVG style={styles.icon} />
+          <View style={styles.greyIcon}>
+            <DressHangerSVG height={30} width={28} />
           </View>
-          <TouchableOpacity style={styles.btn} onPress={onAddToCartHandler}>
-            <Text style={styles.btnText}>Add to Cart</Text>
+          <TouchableOpacity
+            style={globalStyles.primaryBtn}
+            onPress={onAddToCartHandler}>
+            <Text style={[globalStyles.text, globalStyles.whiteText]}>
+              {HOME.POPULAR_PRODUCTS.addToCart}
+            </Text>
           </TouchableOpacity>
         </View>
-
       </ScrollView>
-
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
-  imgContainer: {},
-  contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  iconWrappers: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 50,
-    width: 50,
-    overflow: 'hidden',
-
-    borderRadius: 999,
-    backgroundColor: '#eeeeee',
-  },
-  iconWrappers2: {
-    position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 50,
-    width: 50,
-    overflow: 'hidden',
-    right: 0,
-    borderRadius: 999,
-    backgroundColor: '#eeeeee',
-  },
-  iconWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 50,
-    width: 50,
-    overflow: 'hidden',
-
-    borderRadius: 999,
-    backgroundColor: '#eeeeee',
-  },
-  priceWrapper: {
-    flexDirection: 'row',
-    rowGap: 20,
-    columnGap: 20,
-
-    justifyContent: 'space-between',
-  },
-  icon: {
-    height: 30,
-    width: 30,
-  },
-  btnText: {
-    color: 'white',
-    fontSize: 12,
-  },
-  text: {
-    color: '#949494',
-    fontSize: 17,
-  },
-  btn: {
-    backgroundColor: '#111111',
-    color: '#ffffff',
-    borderRadius: 10,
-    textAlign: 'center',
-    height: 40,
-    width: 140,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  bottomWrapper: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    columnGap: 20,
-    backgroundColor: 'white',
-    padding: 20,
-  },
-  itemWrapper: {
-    color: '#000000',
-    marginLeft: 20,
-    fontWeight: '600',
-  },
-  textContainer: {
-    backgroundColor: '#ffffff',
-    padding: 20,
-  },
-  strikeText: {
-    textDecorationLine: 'line-through',
-  },
-  sizeWrapper: {
-    backgroundColor: '#f7f7f7',
-    height: 60,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 23,
-    color: '#000000',
-    fontWeight: '500',
-  },
-  orangeText: {
-    color: '#e2801c',
-    fontSize: 18,
-    fontWeight: '700',
-  },
   img: {
     height: 600,
     width: '100%',
@@ -212,8 +123,95 @@ const styles = StyleSheet.create({
     display: 'flex',
     columnGap: 20,
     alignSelf: 'center',
-    // alignItems:'center',
+
     rowGap: 20,
-    // justifyContent:'space-between'
+  },
+  iconWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    padding: 20,
+    position: 'absolute',
+  },
+  icon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 57,
+    width: 57,
+    borderRadius: 999,
+    backgroundColor: colors.white,
+  },
+  greyIcon: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 53,
+    width: 53,
+    borderRadius: 999,
+    backgroundColor: colors.lightGrey,
+  },
+  title: {
+    fontSize: 20,
+    color: colors.black,
+    fontWeight: '500',
+    marginBottom: 10,
+  },
+  priceWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+  },
+
+  text: {
+    color: colors.grey,
+    fontSize: 17,
+  },
+  textContainer: {
+    backgroundColor: colors.white,
+    padding: 22,
+  },
+
+  orangeText: {
+    color: '#e2801c',
+    fontSize: 21,
+    fontWeight: '700',
+    marginVertical: 5,
+  },
+  Rating: {
+    textAlign: 'right',
+    marginTop: 10,
+  },
+
+  strikeText: {
+    textDecorationLine: 'line-through',
+  },
+  itemWrapper: {
+    color: colors.black,
+    marginLeft: 25,
+    fontSize: 17,
+    fontWeight: '600',
+  },
+  sizeWrapper: {
+    backgroundColor: colors.lightestGrey,
+    height: 70,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 40,
+  },
+  bottomWrapper: {
+    // position: 'absolute',
+    // bottom: 0,
+    // right: 0,
+    // left:0,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems:'center',
+    columnGap: 20,
+    padding:30,
+    backgroundColor: colors.white,
+
+  
   },
 });
