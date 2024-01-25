@@ -1,53 +1,44 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {
-  Button,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React, { useEffect, useState } from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import ProductCard from '../../components/OfferCard/OfferCard';
 import ProductImage from '../../components/ProductImage/ProductImage';
-import {CATEGORY} from '../../constants/routeConstants';
-import {Header} from '../../container/Header/Header';
-import Navbar from '../../container/Navbar/Navbar';
-import { CartContext } from '../../context/CartContext';
+import { CATEGORY } from '../../constants/routeConstants';
+import { Header } from '../../container/Header/Header';
+import OfferSection from '../../container/OfferSection/OfferSection';
+import { Offer, Product } from '../../interface/Products';
+import { HOME } from '../../messages/CommonMessages';
 import {
   getOffersByCategory,
-  getProductsByCategory,
+  getProductsByCategory
 } from '../../services/ProductApi';
+import {  globalStyles } from '../../styles/globalStyle';
 
-
-export const Home = ({navigation}) => {
-  const [selectedProduct, setSelectedProduct] = useState([]);
-  const [selectedOffer, setSelectedOffer] = useState([]);
-  const { cartCount } = useContext(CartContext);
+/**
+ * @description Home Screen of Fashion Page
+ * @returns Home Page of the Fashion App
+ */
+export const Home = () => {
+  const [selectedProduct, setSelectedProduct] = useState<Product[]>([]);
+  const [selectedOffers, setSelectedOffers] = useState<Offer[]>([]);
   useEffect(() => {
     const getMethod = async () => {
       const data = await getProductsByCategory(CATEGORY[0]);
       setSelectedProduct(data);
       const offers = await getOffersByCategory(CATEGORY[0]);
-      setSelectedOffer(offers);
+      setSelectedOffers(offers);
     };
     getMethod();
   }, []);
-
+  const Tab = createMaterialTopTabNavigator();
   const onCategoryChange = async (category: string) => {
     const data = await getProductsByCategory(category);
     setSelectedProduct(data);
     const offers = await getOffersByCategory(category);
-    setSelectedOffer(offers);
+    setSelectedOffers(offers);
   };
 
-  const Offers = (
-    <FlatList
-      horizontal
-      data={selectedOffer}
-      renderItem={({item}) => <ProductCard detail={item}  />}
-      keyExtractor={item => item.id.toString()}
-    />
-  );
+ 
 
   const products = (
     <FlatList
@@ -59,27 +50,17 @@ export const Home = ({navigation}) => {
   );
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={globalStyles.container}>
       <Header />
-      <Navbar selectedCategory={onCategoryChange} />
-      <Text>{ cartCount}</Text>
-      <View style={styles.wrapper}>{Offers}</View>
-
-      <Text style={styles.bold}>Most Popular Product</Text>
-
+<OfferSection offers={selectedOffers}/>
+      <Text style={styles.bold}>{HOME.POPULAR_PRODUCTS.title}</Text>
       <View style={styles.wrapper}>{products}</View>
-
-      {/* <Button title="Click Me" onPress={() => navigation.navigate('Product')} /> */}
-    </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fffff',
-  
-  },
+
   wrapper: {
     paddingTop: 20,
     paddingBottom: 20,

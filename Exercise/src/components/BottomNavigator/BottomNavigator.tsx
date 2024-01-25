@@ -1,30 +1,44 @@
-import BottomSheet from '@gorhom/bottom-sheet'
+import BottomSheet from '@gorhom/bottom-sheet';
 import React, { useCallback, useMemo, useRef } from 'react';
-import { Text, View } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const BottomNavigator = () => {
-    const bottomSheetRef = useRef<BottomSheet>(null);
+  const bottomSheetRef = useRef<BottomSheet>(null);
 
-    // variables
+  // variables
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log('handleSheetChanges', index);
+  }, []);
 
-    const snapPoints = useMemo(() => ['25%', '50%'], []);
-    const handleSheetChanges = useCallback((index: number) => {
-        console.log('handleSheetChanges', index);
-      }, []);
   return (
-      <View>
-           <BottomSheet
+    <GestureHandlerRootView style={styles.container}>
+      <BottomSheet
         ref={bottomSheetRef}
         index={1}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
       >
-        <View >
+        <View style={styles.content}>
           <Text>Awesome 🎉</Text>
+          {/* Your long content here */}
         </View>
       </BottomSheet>
-</View>
-  )
-}
+    </GestureHandlerRootView>
+  );
+};
 
-export default BottomNavigator
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  content: {
+    padding: 16,
+    backgroundColor: 'white',
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+});
+
+export default BottomNavigator;

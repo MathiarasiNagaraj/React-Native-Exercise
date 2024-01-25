@@ -14,13 +14,14 @@ import StarSVG from '../../assets/images/icons/star.svg';
 import HeartSVG from '../../assets/images/icons/heart.svg';
 import DressHangerSVG from '../../assets/images/icons/dressHanger.svg';
 import LeftArrowSVG from '../../assets/images/icons/leftArrow.svg';
-import ShoppingCartSVG from '../../assets/images/icons/shoppingCart.svg';
-import {useContext, useRef} from 'react';
+import {useContext, useMemo, useRef} from 'react';
 import { CartContext } from '../../context/CartContext';
 import Cart from '../../components/Cart/Cart';
+import BottomNavigator from '../../components/BottomNavigator/BottomNavigator';
 
 export const Product = ({route}) => {
   const { detail } = route.params;
+  const snapPoints = useMemo(() => ['20%', '50%'], []);
   const { addToCart } = useContext(CartContext);
   const sizes = (
     <FlatList
@@ -49,6 +50,7 @@ export const Product = ({route}) => {
 <Cart/>
           </View>
         </View>
+        <BottomSheet snapPoints={snapPoints}>
         <View style={styles.textContainer}>
           <Text style={styles.title}>{detail.product_name}</Text>
           <View style={styles.priceWrapper}>
@@ -77,7 +79,9 @@ export const Product = ({route}) => {
             {sizes}
           </View>
         </View>
-
+      
+       
+     </BottomSheet>
         <View style={styles.bottomWrapper}>
           <View style={styles.iconWrapper}>
             <HeartSVG style={styles.icon} />
@@ -89,13 +93,9 @@ export const Product = ({route}) => {
             <Text style={styles.btnText}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
+
       </ScrollView>
 
-      {/* <BottomSheet >
-  
-         
-      
-      </BottomSheet> */}
     </SafeAreaView>
   );
 };
