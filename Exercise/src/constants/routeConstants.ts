@@ -1,4 +1,4 @@
-export const CATEGORY = ['Man', 'Woman', 'Kids'];
+
 
 export const routes = {
   Man: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import OfferCard from '../../components/OfferCard/OfferCard';
 import ProductCard from '../../components/OfferCard/OfferCard';
 import {Offer} from '../../interface/Products';
@@ -10,7 +10,7 @@ interface OfferSectionProps {
 }
 /**
  * @description Container Component for Offers
- * @param Offers array 
+ * @param Offers array
  * @returns  Offer Section
  */
 const OfferSection: React.FC<OfferSectionProps> = ({offers}) => {
@@ -29,9 +29,9 @@ export default OfferSection;
 
 const styles = StyleSheet.create({
   SectionWrapper: {
-        height: 520,
-        paddingVertical: 30,
-     
+    height: 520,
+    paddingVertical: 30,
+
     backgroundColor: colors.lightGrey,
   },
 });

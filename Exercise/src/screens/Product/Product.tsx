@@ -2,6 +2,7 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import {
   FlatList,
   Image,
+  ImageBackground,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -40,8 +41,9 @@ export const Product = ({route}) => {
   return (
 
       <ScrollView style={styles.container}>
-        <View>
-          <Image style={styles.img} source={{uri: detail.modelImg}} />
+      <View>
+        <ImageBackground source={{uri: detail.modelImg}} style={styles.img} />
+          {/* <Image style={styles.img} source={{uri: detail.modelImg}} /> */}
           <View style={styles.iconWrapper}>
             <TouchableOpacity onPress={handleBackClick}>
             <View style={styles.icon}>
