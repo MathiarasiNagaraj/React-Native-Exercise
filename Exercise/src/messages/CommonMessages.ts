@@ -4,8 +4,9 @@ export const HOME = {
     },
     POPULAR_PRODUCTS: {
         title: 'Most Popular Product',
-        RM: 'RM',
+        RM: 'RM ',
         availableSizes: 'Size Availabe :',
-        addToCart:'Add to Cart'
+        addToCart: 'Add to Cart',
+        OFF:'OFF'
     }
 }

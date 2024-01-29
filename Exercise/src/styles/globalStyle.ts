@@ -8,18 +8,21 @@ export const globalStyles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 17,
+    fontSize: 18,
     color: colors.black,
-    fontWeight: '600',
+      fontWeight: '600',
+    fontFamily:'Poppins-Regular'
   },
   whiteText: {
-    color: colors.white,
+      color: colors.white,
+      
   },
 
   mediumText: {
     fontSize: 17,
     fontWeight: '500',
-    marginBottom: 8,
+      marginBottom: 8,
+      fontFamily:'Poppins-Medium'
   },
   greyText: {
     color: colors.grey,
@@ -27,17 +30,19 @@ export const globalStyles = StyleSheet.create({
   lineThroughText: {
     textDecorationLine: 'line-through',
   },
-  underLinedText: {
-    textDecorationLine: 'underline',
+    underLinedText: {
+   textDecorationLine:'underline'
   },
 
   bolderText: {
     fontSize: 30,
-    fontWeight: '900',
+      fontWeight: '300',
+      fontFamily:'Poppins-Bold'
   },
   boldText: {
     fontSize: 26,
-    fontWeight: '800',
+      fontWeight: '800',
+      fontFamily:'Poppins-Regular'
   },
 
   primaryBtn: {

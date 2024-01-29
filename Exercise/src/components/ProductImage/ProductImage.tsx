@@ -15,10 +15,10 @@ const ProductImage :React.FC<ProductImageProps>= ({detail}) => {
   const navigation = useNavigation();
 
   const handleProductClick = () => {
-    navigation.navigate('Product', {detail: detail});
+    navigation.navigate('Product', {detail});
   };
   return (
-    <TouchableOpacity onPress={handleProductClick}>
+    <TouchableOpacity onPress={handleProductClick} style={styles.shadowProp}>
       <Image source={{uri: detail.modelImg}} style={styles.img} />
     </TouchableOpacity>
   );
@@ -30,7 +30,14 @@ const styles = StyleSheet.create({
   img: {
     height: 150,
     width: 130,
-    marginHorizontal: 10,
+    marginHorizontal: 15,
     borderRadius: 10,
+  },
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: {width: 2, height: 4},
+    shadowOpacity: 0.6,
+    shadowRadius: 13,
+    elevation: 5,
   },
 });

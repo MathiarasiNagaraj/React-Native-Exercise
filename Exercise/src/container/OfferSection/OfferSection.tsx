@@ -1,7 +1,6 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 import OfferCard from '../../components/OfferCard/OfferCard';
-import ProductCard from '../../components/OfferCard/OfferCard';
 import {Offer} from '../../interface/Products';
 import {colors} from '../../styles/colors';
 
@@ -29,9 +28,8 @@ export default OfferSection;
 
 const styles = StyleSheet.create({
   SectionWrapper: {
-    height: 520,
+    height: 540,
     paddingVertical: 30,
-
     backgroundColor: colors.lightGrey,
   },
 });

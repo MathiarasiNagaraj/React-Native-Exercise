@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   },
   countText: {
     fontSize: 12,
-    color: '#ffffff',
+      color: '#ffffff',
+      fontFamily:'Poppins-Regular',
   },
 });

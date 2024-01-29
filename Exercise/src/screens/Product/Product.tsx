@@ -11,9 +11,8 @@ import {
   View,
 } from 'react-native';
 
-import {useContext, useMemo} from 'react';
-import DressHangerSVG from '../../assets/images/icons/dressHanger.svg';
-import HeartSVG from '../../assets/images/icons/heart.svg';
+import {useContext} from 'react';
+
 import LeftArrowSVG from '../../assets/images/icons/leftArrow.svg';
 
 import Cart from '../../components/Cart/Cart';
@@ -21,13 +20,13 @@ import {CartContext} from '../../context/CartContext';
 import {colors} from '../../styles/colors';
 import {globalStyles} from '../../styles/globalStyle';
 import {HOME} from '../../messages/CommonMessages';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import BottomNavigator from '../../components/BottomNavigator/BottomNavigator';
+import AddToCart from '../../container/AddToCart/AddToCart';
 
 export const Product = ({route}) => {
   const {detail} = route.params;
-  const snapPoints = useMemo(() => ['20%', '50%'], []);
-  const { addToCart } = useContext(CartContext);
+  const {addToCart} = useContext(CartContext);
   const navigation = useNavigation();
 
   const handleBackClick = () => {
@@ -39,47 +38,28 @@ export const Product = ({route}) => {
   };
 
   return (
-
-      <ScrollView style={styles.container}>
+    <ScrollView style={styles.container}>
       <View>
         <ImageBackground source={{uri: detail.modelImg}} style={styles.img} />
-          {/* <Image style={styles.img} source={{uri: detail.modelImg}} /> */}
-          <View style={styles.iconWrapper}>
-            <TouchableOpacity onPress={handleBackClick}>
+        <View style={styles.iconWrapper}>
+          <TouchableOpacity onPress={handleBackClick}>
             <View style={styles.icon}>
               <LeftArrowSVG />
-              </View>
-              </TouchableOpacity>
-            <View style={styles.icon}>
-              <Cart />
             </View>
-          </View>
-        </View>
-        <BottomNavigator detail={detail}/>
-    
-        <View style={styles.bottomWrapper}>
-          <View style={styles.greyIcon}>
-            <HeartSVG height={30} width={28} />
-          </View>
-          <View style={styles.greyIcon}>
-            <DressHangerSVG height={30} width={28} />
-          </View>
-          <TouchableOpacity
-            style={globalStyles.primaryBtn}
-            onPress={onAddToCartHandler}>
-            <Text style={[globalStyles.text, globalStyles.whiteText]}>
-              {HOME.POPULAR_PRODUCTS.addToCart}
-            </Text>
           </TouchableOpacity>
+          <View style={styles.icon}>
+            <Cart />
+          </View>
         </View>
-      </ScrollView>
-   
+      </View>
+      <BottomNavigator detail={detail} />
+{/* 
+      <AddToCart onAddToCartHandler={onAddToCartHandler} /> */}
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
-  container: {
-
-  },
+  container: {},
   img: {
     height: 635,
     width: '100%',
@@ -111,14 +91,11 @@ const styles = StyleSheet.create({
   },
 
   bottomWrapper: {
-   
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    alignItems:'center',
+    alignItems: 'center',
     columnGap: 20,
-    padding:30,
+    padding: 30,
     backgroundColor: colors.white,
-
-  
   },
 });

@@ -10,7 +10,7 @@ import { colors } from '../../styles/colors';
 export const Header = () => {
   return (
     <SafeAreaView style={styles.wrapper}>
-      <Text style={styles.title}>{TITLE}</Text>
+      <Text style={[styles.title , styles.poppins]}>{TITLE}</Text>
       <Cart />
     </SafeAreaView>
   );
@@ -21,10 +21,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems:'center',
     backgroundColor: colors.white,
-    padding: 25,
+    padding: 30,
+  },
+  poppins: {
+    fontFamily: 'Poppins-Black',
+
   },
   title: {
-    fontWeight: '900',
+
     fontSize: 27,
     color:colors.black
   }

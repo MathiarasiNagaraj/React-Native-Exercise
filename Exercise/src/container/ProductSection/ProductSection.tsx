@@ -4,8 +4,17 @@ import {StyleSheet, View, Text} from 'react-native';
 import ProductImage from '../../components/ProductImage/ProductImage';
 import {HOME} from '../../messages/CommonMessages';
 import {colors} from '../../styles/colors';
+import {Product} from '../../interface/Products';
 
-const ProductSection = ({selectedProduct}) => {
+interface ProductSectionProps {
+  selectedProduct: Product[];
+}
+/**
+ * @description Component for Products Container
+ * @param array of selected Category Products
+ * @returns  Product Container Component
+ */
+const ProductSection: React.FC<ProductSectionProps> = ({selectedProduct}) => {
   const products = (
     <FlatList
       horizontal
@@ -26,7 +35,8 @@ export default ProductSection;
 
 const styles = StyleSheet.create({
   SectionWrapper: {
-    paddingVertical: 20,
+    marginVertical: 20,
+    marginTop: 30,
   },
   wrapper: {
     paddingTop: 20,
@@ -35,9 +45,10 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
   title: {
-    fontSize: 23,
-fontWeight:'600',
+    fontSize: 22.5,
+    fontWeight: '900',
+    fontFamily: 'Poppins-Regular',
     color: colors.black,
-    paddingHorizontal: 25,
+    paddingLeft: 30,
   },
 });

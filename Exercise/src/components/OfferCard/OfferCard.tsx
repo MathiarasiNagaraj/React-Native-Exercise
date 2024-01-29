@@ -1,30 +1,45 @@
 import React from 'react';
 import {Image, Platform, StyleSheet, Text, View} from 'react-native';
 import {Offer} from '../../interface/Products';
-import { HOME } from '../../messages/CommonMessages';
-import { colors } from '../../styles/colors';
-import { globalStyles } from '../../styles/globalStyle';
-
+import {HOME} from '../../messages/CommonMessages';
+import {colors} from '../../styles/colors';
+import {globalStyles} from '../../styles/globalStyle';
+import DropShadow from 'react-native-drop-shadow';
 interface OfferProps {
   detail: Offer;
 }
+/**
+ * @description Offer card component with offer details
+ * @param detail Offer detail Object
+ * @returns Offer card component
+ */
 const OfferCard: React.FC<OfferProps> = ({detail}) => {
   return (
-    <View style={[styles.card,styles.elevation]}>
+    <DropShadow style={[styles.shadowProp, styles.card]}>
       <Image source={{uri: detail.modelImg}} style={styles.img} />
       <View style={styles.textWrapper}>
-        <Text style={[globalStyles.bolderText,globalStyles.whiteText]}>{detail.discountText}</Text>
+        <Text style={[globalStyles.bolderText, globalStyles.whiteText]}>
+          {detail.discountText}
+        </Text>
         <View style={styles.horizontalLine} />
-        <View >
-          <Text style={[globalStyles.whiteText,globalStyles.mediumText]}>
-          
-       {HOME.OFFER.useCode}
-            <Text style={[globalStyles.mediumText,globalStyles.whiteText,globalStyles.underLinedText]}>{detail.discountCode}</Text>
+        <View>
+          <Text style={[globalStyles.whiteText, globalStyles.mediumText]}>
+            {HOME.OFFER.useCode}
+            <Text
+              style={[
+                globalStyles.mediumText,
+                globalStyles.whiteText,
+                globalStyles.underLinedText,
+              ]}>
+              {detail.discountCode}
+            </Text>
           </Text>
-          <Text style={[globalStyles.mediumText,globalStyles.whiteText]}>{detail.discountSlogan}</Text>
+          <Text style={[globalStyles.mediumText, globalStyles.whiteText]}>
+            {detail.discountSlogan}
+          </Text>
         </View>
       </View>
-    </View>
+    </DropShadow>
   );
 };
 
@@ -37,22 +52,14 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: 0,
     position: 'relative',
-    ...Platform.select({
-      android: {
-        elevation: 5,
-        shadowColor: '#111',
-      },
-      ios: {
-        shadowColor: 'rgba(100, 100, 111, 0.2)',
-        shadowOffset: { width: 0, height: 7 },
-        shadowOpacity: 1,
-        shadowRadius: 29,
-      },
-    }),
   },
-  elevation: {
-    elevation: 20,
-    shadowColor: '#52006A',
+
+  shadowProp: {
+    shadowColor: '#171717',
+    shadowOffset: {width: 0, height: 13},
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 5,
   },
   img: {
     position: 'absolute',
@@ -61,13 +68,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  bottomWrapper: {
-    height: 150,
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
   textWrapper: {
     position: 'absolute',
     bottom: 0,
@@ -76,11 +76,8 @@ const styles = StyleSheet.create({
     padding: 25,
   },
   horizontalLine: {
-    borderBottomColor:colors.white,
+    borderBottomColor: colors.white,
     borderBottomWidth: 0.5,
     marginVertical: 20,
   },
-
-
-
 });

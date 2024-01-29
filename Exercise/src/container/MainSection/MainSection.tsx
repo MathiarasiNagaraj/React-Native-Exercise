@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, Text} from 'react-native';
-import {CATEGORY} from '../../constants/routeConstants';
 import {Product, Offer} from '../../interface/Products';
 import {
   getProductsByCategory,
@@ -12,6 +11,11 @@ import ProductSection from '../ProductSection/ProductSection';
 interface MainSectionProps {
   category: string;
 }
+/**
+ * @description Main Container component for Products and Offers
+ * @param category Type of category
+ * @returns  Main section container ,wrapper for offers and products section
+ */
 const MainSection: React.FC<MainSectionProps> = ({category}) => {
   const [selectedProduct, setSelectedProduct] = useState<Product[]>([]);
   const [selectedOffers, setSelectedOffers] = useState<Offer[]>([]);
