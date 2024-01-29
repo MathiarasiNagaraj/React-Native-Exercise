@@ -11,10 +11,10 @@ import {colors} from '../../styles/colors';
 const AddToCart = ({onAddToCartHandler}) => {
   return (
     <View style={[styles.bottomWrapper,styles.shadowProp]}>
-      <View style={styles.greyIcon}>
+      <View style={[styles.greyIcon]}>
         <HeartSVG height={30} width={28} />
       </View>
-      <View style={styles.greyIcon}>
+      <View style={[styles.greyIcon]}>
         <DressHangerSVG height={30} width={28} />
       </View>
       <TouchableOpacity
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    columnGap: 20,
+    columnGap: 30,
     padding: 30,
     backgroundColor: colors.white,
   },
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 50, height: 50},
     shadowOpacity: 0.3,
     shadowRadius: 5,
-    elevation: 9,
+    elevation: 19,
   },
   greyIcon: {
     justifyContent: 'center',

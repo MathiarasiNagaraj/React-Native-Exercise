@@ -43,11 +43,11 @@ export const Product = ({route}) => {
         <ImageBackground source={{uri: detail.modelImg}} style={styles.img} />
         <View style={styles.iconWrapper}>
           <TouchableOpacity onPress={handleBackClick}>
-            <View style={styles.icon}>
+            <View style={[styles.icon,styles.shadowProp]}>
               <LeftArrowSVG />
             </View>
           </TouchableOpacity>
-          <View style={styles.icon}>
+          <View style={[styles.icon,styles.shadowProp]}>
             <Cart />
           </View>
         </View>
@@ -72,6 +72,13 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 20,
     position: 'absolute',
+  },
+  shadowProp: {
+    shadowColor: colors.black,
+    shadowOffset: {width: 50, height: 50},
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 19,
   },
   greyIcon: {
     justifyContent: 'center',

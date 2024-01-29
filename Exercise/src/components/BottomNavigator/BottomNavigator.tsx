@@ -29,8 +29,8 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({detail}) => {
   };
 
   return (
-      <BottomSheet
-          style={{borderRadius:0}}
+    <BottomSheet
+      style={{borderRadius: 0}}
       snapPoints={snapPoints}
       handleIndicatorStyle={handleStyle}
       containerStyle={{borderRadius: 0}}>
@@ -43,17 +43,22 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({detail}) => {
               {detail.price_details.current_price}
             </Text>
             <Text>
-              <Text style={[globalStyles.lineThroughText,globalStyles.text,globalStyles.greyText]}>
+              <Text
+                style={[
+                  globalStyles.lineThroughText,
+                  globalStyles.text,
+                  globalStyles.greyText,
+                ]}>
                 {HOME.POPULAR_PRODUCTS.RM}
-                     {detail.price_details.actual_price}
+                {detail.price_details.actual_price}
               </Text>
               <Text style={[globalStyles.text]}>
-              {''}  {detail.price_details.discount} {HOME.POPULAR_PRODUCTS.OFF}
+                {''} {detail.price_details.discount} {HOME.POPULAR_PRODUCTS.OFF}
               </Text>
             </Text>
           </View>
-          <View >
-            <StarSVG style={ [styles.Rating]} />
+          <View>
+            <StarSVG style={[styles.Rating]} />
             <Text style={styles.Rating}>
               {detail.rating_details.rating}/{detail.rating_details.scale}
             </Text>
@@ -82,41 +87,37 @@ const styles = StyleSheet.create({
 
     marginBottom: 10,
     fontWeight: '500',
-          fontFamily: 'Poppins-Medium',
+    fontFamily: 'Poppins-Medium',
   },
   priceWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-      alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
 
-    text: {
-        fontFamily: 'Poppins-Regular',
+  text: {
+    fontFamily: 'Poppins-Regular',
     color: colors.grey,
-        fontSize: 16,
-    marginRight:4
+    fontSize: 16,
+    marginRight: 4,
   },
   textContainer: {
     backgroundColor: colors.white,
     padding: 22,
   },
 
-    orangeText: {
-        fontFamily: 'Poppins-Regular',
+  orangeText: {
+    fontFamily: 'Poppins-Regular',
     color: colors.darkOrange,
     fontSize: 22,
     fontWeight: '700',
     marginVertical: 5,
   },
-    Rating: {
-        fontFamily: 'Poppins-Regular',
+  Rating: {
+    fontFamily: 'Poppins-Regular',
     textAlign: 'right',
-      marginTop: 10,
-    
-
-    },
-  
-
+    marginTop: 10,
+  },
 
   itemWrapper: {
     color: colors.black,
@@ -125,8 +126,8 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     fontFamily: 'Poppins-Bold',
   },
-    sizeWrapper: {
-        fontFamily: 'Poppins-Regular',
+  sizeWrapper: {
+    fontFamily: 'Poppins-Regular',
     backgroundColor: colors.lightestGrey,
     height: 70,
     display: 'flex',
