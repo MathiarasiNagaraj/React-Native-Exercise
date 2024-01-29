@@ -11,7 +11,7 @@ interface BottomNavigatorProps {
   detail: Product;
 }
 const BottomNavigator: React.FC<BottomNavigatorProps> = ({detail}) => {
-  const snapPoints = useMemo(() => ['55%', '79%'], []);
+  const snapPoints = useMemo(() => ['39%', '55%'], []);
   const sizes = (
     <FlatList
       horizontal

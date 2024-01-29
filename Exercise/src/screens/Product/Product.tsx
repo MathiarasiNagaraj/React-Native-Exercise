@@ -53,8 +53,8 @@ export const Product = ({route}) => {
         </View>
       </View>
       <BottomNavigator detail={detail} />
-{/* 
-      <AddToCart onAddToCartHandler={onAddToCartHandler} /> */}
+
+      <AddToCart onAddToCartHandler={onAddToCartHandler} />
     </ScrollView>
   );
 };

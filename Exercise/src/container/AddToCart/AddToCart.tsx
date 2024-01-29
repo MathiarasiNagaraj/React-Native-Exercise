@@ -10,7 +10,7 @@ import {colors} from '../../styles/colors';
 
 const AddToCart = ({onAddToCartHandler}) => {
   return (
-    <View style={styles.bottomWrapper}>
+    <View style={[styles.bottomWrapper,styles.shadowProp]}>
       <View style={styles.greyIcon}>
         <HeartSVG height={30} width={28} />
       </View>
@@ -38,7 +38,13 @@ const styles = StyleSheet.create({
     padding: 30,
     backgroundColor: colors.white,
   },
-
+  shadowProp: {
+    shadowColor: colors.black,
+    shadowOffset: {width: 50, height: 50},
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 9,
+  },
   greyIcon: {
     justifyContent: 'center',
     alignItems: 'center',
