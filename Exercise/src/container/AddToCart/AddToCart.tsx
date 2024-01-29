@@ -8,9 +8,12 @@ import DressHangerSVG from '../../assets/images/icons/dressHanger.svg';
 import HeartSVG from '../../assets/images/icons/heart.svg';
 import {colors} from '../../styles/colors';
 
-const AddToCart = ({onAddToCartHandler}) => {
+interface AddToCartProps{
+    onAddToCartHandler:()=>{}
+}
+const AddToCart :React.FC<AddToCartProps>= ({onAddToCartHandler}) => {
   return (
-    <View style={[styles.bottomWrapper,styles.shadowProp]}>
+    <View style={[styles.bottomWrapper, styles.shadowProp]}>
       <View style={[styles.greyIcon]}>
         <HeartSVG height={30} width={28} />
       </View>
