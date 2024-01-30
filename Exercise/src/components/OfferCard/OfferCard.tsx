@@ -67,13 +67,7 @@ const styles = StyleSheet.create({
   codeWrapper: {
     flexDirection: 'row',
   },
-  shadowProp: {
-    // shadowColor: colors.black,
-    // shadowOffset: {width: 5, height: 15},
-    // shadowOpacity: 0.1,
-    // shadowRadius: 5,
-    // elevation: 19,
-  },
+ 
   img: {
     position: 'absolute',
     height: '100%',

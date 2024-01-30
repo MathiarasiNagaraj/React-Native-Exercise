@@ -7,19 +7,16 @@ import {globalStyles} from '../../styles/globalStyle';
 import DressHangerSVG from '../../assets/images/icons/dressHanger.svg';
 import HeartSVG from '../../assets/images/icons/heart.svg';
 import {colors} from '../../styles/colors';
+import Icon from '../../components/Icon/Icon';
 
-interface AddToCartProps{
-    onAddToCartHandler:()=>{}
+interface AddToCartProps {
+  onAddToCartHandler: () => void;
 }
-const AddToCart :React.FC<AddToCartProps>= ({onAddToCartHandler}) => {
+const AddToCart: React.FC<AddToCartProps> = ({onAddToCartHandler}) => {
   return (
-    <View style={[styles.bottomWrapper, styles.shadowProp]}>
-      <View style={[styles.greyIcon]}>
-        <HeartSVG height={30} width={28} />
-      </View>
-      <View style={[styles.greyIcon]}>
-        <DressHangerSVG height={30} width={28} />
-      </View>
+    <View style={styles.bottomWrapper}>
+      <Icon style={globalStyles.greyIcon} icon={<HeartSVG height={28} width={28} />} />
+      <Icon style={globalStyles.greyIcon} icon={<DressHangerSVG  height={28} width={28} />} />
       <TouchableOpacity
         style={globalStyles.primaryBtn}
         onPress={onAddToCartHandler}>
@@ -38,22 +35,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     columnGap: 30,
-    padding: 30,
+    height:125,
+    padding: 28,
     backgroundColor: colors.white,
-  },
-  shadowProp: {
-    shadowColor: colors.black,
-    shadowOffset: {width: 0, height: 55},
-    shadowOpacity: 0.3,
-    shadowRadius: 15,
-    elevation: 50,
-  },
-  greyIcon: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 53,
-    width: 53,
-    borderRadius: 999,
-    backgroundColor: colors.lightGrey,
+    elevation: 13,
   },
 });

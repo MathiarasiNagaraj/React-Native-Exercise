@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import { SCREEN } from '../../constants/commonConstants';
 import { Product } from '../../interface/Products';
 
 /**
@@ -15,7 +16,7 @@ const ProductImage :React.FC<ProductImageProps>= ({detail}) => {
   const navigation = useNavigation();
 
   const handleProductClick = () => {
-    navigation.navigate('Product', {detail});
+    navigation.navigate(SCREEN.PRODUCT, {detail});
   };
   return (
     <TouchableOpacity onPress={handleProductClick} style={styles.shadowProp}>

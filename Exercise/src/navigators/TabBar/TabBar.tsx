@@ -8,20 +8,20 @@ import {colors} from '../../styles/colors';
  * @description Top bar component using React Navigation material top bar
  * @returns Top Bar component
  */
-export const TabBar = () => {
+export const TabBar = ({ tabContentComponent }) => {
   const Tab = createMaterialTopTabNavigator();
 
   const tabItems = CATEGORY.map(category => (
     <Tab.Screen
-      name={category}
-      key={category}
-      children={() => <MainSection category={category} />}
+      name={category.name}
+      key={category.name}
+      children={() => React.createElement(tabContentComponent, { category: category.category })}
     />
   ));
 
   return (
     <Tab.Navigator
-      
+      style={{marginTop:70}}
       screenOptions={{
         tabBarLabelStyle: {
           fontSize: 18,
@@ -29,8 +29,10 @@ export const TabBar = () => {
           fontFamily: 'Poppins-Medium',
           textTransform: 'capitalize',
         },
+        tabBarScrollEnabled:true,
         tabBarItemStyle: {
           width: 110,
+        
         },
         tabBarActiveTintColor: colors.black,
         tabBarIndicatorStyle: {

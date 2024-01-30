@@ -3,6 +3,7 @@ import {
   FlatList,
   Image,
   ImageBackground,
+  ImageBackgroundBase,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -21,8 +22,11 @@ import {colors} from '../../styles/colors';
 import {globalStyles} from '../../styles/globalStyle';
 import {HOME} from '../../messages/CommonMessages';
 import {useNavigation} from '@react-navigation/native';
-import BottomNavigator from '../../components/BottomNavigator/BottomNavigator';
+import BottomNavigator from '../../components/ProductDetails/ProductDetails';
 import AddToCart from '../../container/AddToCart/AddToCart';
+import Icon from '../../components/Icon/Icon';
+import {Header} from '../../container/Header/Header';
+import {TITLE} from '../../constants/commonConstants';
 
 export const Product = ({route}) => {
   const {detail} = route.params;
@@ -30,7 +34,7 @@ export const Product = ({route}) => {
   const navigation = useNavigation();
 
   const handleBackClick = () => {
-    navigation.navigate('Home');
+    navigation.goBack();
   };
 
   const onAddToCartHandler = () => {
@@ -38,20 +42,20 @@ export const Product = ({route}) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <View>
-        <ImageBackground source={{uri: detail.modelImg}} style={styles.img} />
-        <View style={styles.iconWrapper}>
+    <ScrollView>
+      <Header
+        icon={
           <TouchableOpacity onPress={handleBackClick}>
-            <View style={[styles.icon,styles.shadowProp]}>
-              <LeftArrowSVG />
-            </View>
+            <Icon icon={<LeftArrowSVG />} style={globalStyles.whiteIcon} />
           </TouchableOpacity>
-          <View style={[styles.icon,styles.shadowProp]}>
-            <Cart />
-          </View>
-        </View>
-      </View>
+        }
+        cart={<Icon icon={<Cart />} style={globalStyles.whiteIcon} />}
+        title={undefined}
+        style={globalStyles.transparentBg(0)}
+      />
+      <ImageBackground source={{uri: detail.modelImg}} style={styles.img} />
+    
+
       <BottomNavigator detail={detail} />
 
       <AddToCart onAddToCartHandler={onAddToCartHandler} />
@@ -59,7 +63,6 @@ export const Product = ({route}) => {
   );
 };
 const styles = StyleSheet.create({
-  container: {},
   img: {
     height: 635,
     width: '100%',
@@ -72,37 +75,5 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 20,
     position: 'absolute',
-  },
-  shadowProp: {
-    shadowColor: colors.black,
-    shadowOffset: {width: 50, height: 50},
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 19,
-  },
-  greyIcon: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 53,
-    width: 53,
-    borderRadius: 999,
-    backgroundColor: colors.lightGrey,
-  },
-  icon: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 57,
-    width: 57,
-    borderRadius: 999,
-    backgroundColor: colors.white,
-  },
-
-  bottomWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    columnGap: 20,
-    padding: 30,
-    backgroundColor: colors.white,
   },
 });
