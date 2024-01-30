@@ -15,7 +15,7 @@ interface OfferProps {
  */
 const OfferCard: React.FC<OfferProps> = ({detail}) => {
   return (
-    <View style={[styles.shadowProp, styles.card]}>
+    <View style={[ styles.card]}>
       <Image source={{uri: detail.modelImg}} style={styles.img} />
       <View style={styles.textWrapper}>
         <Text style={[globalStyles.bolderText, globalStyles.whiteText]}>
@@ -50,10 +50,10 @@ export default OfferCard;
 
 const styles = StyleSheet.create({
   card: {
-    width: 310,
-    height: 420,
+    width: 290,
+    height: 380,
     position: 'relative',
-    marginVertical: 28,
+    marginVertical: 25,
     backgroundColor: colors.lightGrey,
     overflow: 'hidden',
     borderRadius: 10,

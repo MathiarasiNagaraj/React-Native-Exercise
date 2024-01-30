@@ -2,6 +2,8 @@ export const TITLE = 'FSHN̷';
 export const SCREEN = {
   HOME: 'Home',
   PRODUCT: 'Product',
+  GALLERY: 'Gallery',
+  MYCART:'My Cart'
 };
 export const BOTTOM_TABS = [
   {name: 'Home', icon: 'home',position:'LEFT'},

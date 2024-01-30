@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -12,16 +13,18 @@ const App = () => {
     <CartProvider>
       <GestureHandlerRootView style={{flex:1}}>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator
+          
+          screenOptions={{headerShown:false,orientation:'portrait'}}>
             <Stack.Screen
               name="Home"
               component={Home}
-              options={{headerShown: false}}
+             
             />
             <Stack.Screen
               name="Product"
               component={Product}
-              options={{headerShown: false}}
+      
             />
           </Stack.Navigator>
         </NavigationContainer>

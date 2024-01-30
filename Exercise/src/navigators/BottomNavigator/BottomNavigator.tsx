@@ -10,6 +10,7 @@ import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Product } from '../../screens/Product/Product';
 import { Home } from '../../screens/Home/Home';
+import TopSection from '../../container/TopSection/TopSection';
 const BottomNavigator = () => {
   const _renderIcon = (routeName, selectedTab) => {
     let icon = '';
@@ -51,7 +52,7 @@ const BottomNavigator = () => {
     <CurvedBottomBar.Screen
       name={items.name}
       position={items.position}
-      component={() => <Cart/>}
+      component={() => <TopSection/>}
     />
   ));
   return (

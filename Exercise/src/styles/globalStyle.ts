@@ -57,7 +57,7 @@ export const globalStyles = StyleSheet.create({
   },
 
   bolderText: {
-    fontSize: 30,
+    fontSize: 25,
       fontWeight: '300',
       fontFamily:'Poppins-Bold'
   },
