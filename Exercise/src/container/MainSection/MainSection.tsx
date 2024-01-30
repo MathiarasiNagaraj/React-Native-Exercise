@@ -37,7 +37,7 @@ const MainSection: React.FC<MainSectionProps> = ({category}) => {
   return (
     <>
       <ScrollView showsVerticalScrollIndicator={false}>
-      <DrawerNavigator />
+    
       <OfferSection offers={selectedOffers} />
       <ProductSection selectedProduct={selectedProduct} />
 

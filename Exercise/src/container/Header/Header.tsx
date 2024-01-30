@@ -1,7 +1,6 @@
 import React from 'react';
-import {Text, StyleSheet, SafeAreaView} from 'react-native';
-import {TITLE} from '../../constants/commonConstants';
-import Cart from '../../components/Cart/Cart';
+import {Text, StyleSheet, SafeAreaView,StatusBar} from 'react-native';
+
 import { colors } from '../../styles/colors';
 /**
  * @description Header Component of the app
@@ -13,6 +12,7 @@ export const Header = ({title,icon,style,cart}) => {
       {title && <Text style={styles.title}  >{ title}</Text>}
      {icon&&icon}
       {cart && cart}
+      <StatusBar backgroundColor={colors.white} barStyle= "dark-content"  />
     </SafeAreaView>
   );
 };
