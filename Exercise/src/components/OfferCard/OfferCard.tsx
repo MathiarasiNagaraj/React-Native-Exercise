@@ -15,7 +15,7 @@ interface OfferProps {
  */
 const OfferCard: React.FC<OfferProps> = ({detail}) => {
   return (
-    <DropShadow style={[styles.shadowProp, styles.card]}>
+    <View style={[styles.shadowProp, styles.card]}>
       <Image source={{uri: detail.modelImg}} style={styles.img} />
       <View style={styles.textWrapper}>
         <Text style={[globalStyles.bolderText, globalStyles.whiteText]}>
@@ -23,23 +23,26 @@ const OfferCard: React.FC<OfferProps> = ({detail}) => {
         </Text>
         <View style={styles.horizontalLine} />
         <View>
-          <Text style={[globalStyles.whiteText, globalStyles.mediumText]}>
-            {HOME.OFFER.useCode}
+          <View style={styles.codeWrapper}>
+            <Text style={[globalStyles.whiteText, globalStyles.mediumText]}>
+              {HOME.OFFER.useCode}
+            </Text>
             <Text
               style={[
                 globalStyles.mediumText,
                 globalStyles.whiteText,
-                globalStyles.underLinedText,
+                styles.underLine,
               ]}>
               {detail.discountCode}
             </Text>
-          </Text>
+          
+          </View>
           <Text style={[globalStyles.mediumText, globalStyles.whiteText]}>
             {detail.discountSlogan}
           </Text>
         </View>
       </View>
-    </DropShadow>
+    </View>
   );
 };
 
@@ -47,19 +50,29 @@ export default OfferCard;
 
 const styles = StyleSheet.create({
   card: {
-    width: 340,
-    height: 460,
-    marginLeft: 30,
-    marginTop: 0,
+    width: 310,
+    height: 420,
     position: 'relative',
+    marginVertical: 28,
+    backgroundColor: colors.lightGrey,
+    overflow: 'hidden',
+    borderRadius: 10,
+    elevation:16
   },
-
+  underLine: {
+    borderBottomWidth: 1.5,
+    borderBottomColor: colors.white,
+    margin: 0,
+  },
+  codeWrapper: {
+    flexDirection: 'row',
+  },
   shadowProp: {
-    shadowColor: '#171717',
-    shadowOffset: {width: 0, height: 13},
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 5,
+    // shadowColor: colors.black,
+    // shadowOffset: {width: 5, height: 15},
+    // shadowOpacity: 0.1,
+    // shadowRadius: 5,
+    // elevation: 19,
   },
   img: {
     position: 'absolute',

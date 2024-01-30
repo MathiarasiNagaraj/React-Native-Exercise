@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
   },
   shadowProp: {
     shadowColor: colors.black,
-    shadowOffset: {width: 50, height: 50},
+    shadowOffset: {width: 0, height: 55},
     shadowOpacity: 0.3,
-    shadowRadius: 5,
-    elevation: 19,
+    shadowRadius: 15,
+    elevation: 50,
   },
   greyIcon: {
     justifyContent: 'center',

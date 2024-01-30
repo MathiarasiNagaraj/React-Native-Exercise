@@ -18,9 +18,12 @@ const ProductSection: React.FC<ProductSectionProps> = ({selectedProduct}) => {
   const products = (
     <FlatList
       horizontal
+      contentContainerStyle={{paddingHorizontal: 30}}
       data={selectedProduct}
+      ItemSeparatorComponent={() => <View style={{width: 20}} />}
       renderItem={({item}) => <ProductImage detail={item} />}
       keyExtractor={item => item.id.toString()}
+      showsHorizontalScrollIndicator={false}
     />
   );
   return (
@@ -36,13 +39,9 @@ export default ProductSection;
 const styles = StyleSheet.create({
   SectionWrapper: {
     marginVertical: 20,
-    marginTop: 30,
   },
   wrapper: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingRight: 25,
-    marginLeft: 20,
+    marginVertical: 20,
   },
   title: {
     fontSize: 22.5,

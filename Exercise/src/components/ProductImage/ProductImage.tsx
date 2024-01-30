@@ -30,8 +30,9 @@ const styles = StyleSheet.create({
   img: {
     height: 150,
     width: 130,
-    marginHorizontal: 15,
-    borderRadius: 10,
+    // marginLeft: 25,
+    position: 'relative',
+    borderRadius: 5,
   },
   shadowProp: {
     shadowColor: '#171717',

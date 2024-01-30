@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems:'center',
     backgroundColor: colors.white,
-    padding: 30,
+    paddingHorizontal: 30,
+    paddingVertical:15
   },
   poppins: {
     fontFamily: 'Poppins-Black',

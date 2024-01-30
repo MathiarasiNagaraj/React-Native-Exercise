@@ -16,20 +16,21 @@ const OfferSection: React.FC<OfferSectionProps> = ({offers}) => {
   const Offers = (
     <FlatList
       horizontal
+      contentContainerStyle={{paddingHorizontal: 30}}
+      ItemSeparatorComponent={() => <View style={{width: 25}} />}
       data={offers}
       renderItem={({item}) => <OfferCard detail={item} />}
       keyExtractor={item => item.id.toString()}
+      showsHorizontalScrollIndicator={false}
     />
   );
-  return <View style={styles.SectionWrapper}>{Offers}</View>;
+  return <View style={styles.sectionWrapper}>{Offers}</View>;
 };
 
 export default OfferSection;
 
 const styles = StyleSheet.create({
-  SectionWrapper: {
-    height: 540,
-    paddingVertical: 30,
+  sectionWrapper: {
     backgroundColor: colors.lightGrey,
   },
 });

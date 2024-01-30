@@ -50,7 +50,7 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 7,
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
-    width: 220,
+    height: 58,
+    width: 210,
   },
 });

@@ -21,13 +21,16 @@ export const TabBar = () => {
 
   return (
     <Tab.Navigator
+      
       screenOptions={{
         tabBarLabelStyle: {
           fontSize: 18,
           fontWeight: '500',
           fontFamily: 'Poppins-Medium',
-          textAlign: 'left',
           textTransform: 'capitalize',
+        },
+        tabBarItemStyle: {
+          width: 110,
         },
         tabBarActiveTintColor: colors.black,
         tabBarIndicatorStyle: {
