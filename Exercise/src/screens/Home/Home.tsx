@@ -7,6 +7,7 @@ import { colors } from '../../styles/colors';
 import Cart from '../../components/Cart/Cart';
 import { View } from 'react-native';
 import MainSection from '../../container/MainSection/MainSection';
+import BottomNavigator from '../../navigators/BottomNavigator/BottomNavigator';
 
 /**
  * @description Home Screen of Fashion Page
@@ -16,7 +17,8 @@ export const Home = () => {
   return (
     <>
       <Header title={TITLE} style={globalStyles.bgColor(colors.white)} icon={undefined} cart={<Cart/>} />
-      <TabBar  tabContentComponent ={MainSection} />
+      <TabBar tabContentComponent={MainSection} />
+ 
     </>
   );
 };

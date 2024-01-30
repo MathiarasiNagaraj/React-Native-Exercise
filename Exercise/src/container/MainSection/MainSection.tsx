@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, Text} from 'react-native';
 import {Product, Offer} from '../../interface/Products';
+import BottomNavigator from '../../navigators/BottomNavigator/BottomNavigator';
 import {
   getProductsByCategory,
   getOffersByCategory,
@@ -32,10 +33,14 @@ const MainSection: React.FC<MainSectionProps> = ({category}) => {
   }, [category]);
 
   return (
+    <>
     <ScrollView showsVerticalScrollIndicator={false}>
       <OfferSection offers={selectedOffers} />
       <ProductSection selectedProduct={selectedProduct} />
-    </ScrollView>
+
+      </ScrollView>
+      <BottomNavigator/>
+      </>
   );
 };
 
