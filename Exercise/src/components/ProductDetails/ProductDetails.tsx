@@ -7,10 +7,10 @@ import {globalStyles} from '../../styles/globalStyle';
 import StarSVG from '../../assets/images/icons/star.svg';
 import {Product} from '../../interface/Products';
 
-interface BottomNavigatorProps {
+interface ProductDetailsProps {
   detail: Product;
 }
-const BottomNavigator: React.FC<BottomNavigatorProps> = ({detail}) => {
+const ProductDetails: React.FC<ProductDetailsProps> = ({detail}) => {
   const snapPoints = useMemo(() => ['39%', '55%'], []);
   const sizes = (
     <FlatList
@@ -36,33 +36,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({detail}) => {
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
         scrollEnabled>
-           {/* <Text>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad sequi
-            culpa error sapiente tenetur enim cupiditate corporis incidunt
-            consequatur ipsam ut, necessitatibus expedita voluptas? Fugiat
-            debitis ad sit mollitia earum! Veritatis quis quia deserunt
-            assumenda recusandae incidunt sapiente a amet impedit nemo natus et
-            sequi rem illo totam, voluptates nesciunt pariatur? Enim eveniet
-            earum voluptas repellat, corporis itaque quas quis! Id, nisi
-            accusantium. Quibusdam, cum autem blanditiis repellat, delectus
-            consequatur, laborum non quo voluptates obcaecati quas quasi porro.
-            Ex corrupti iure expedita mollitia. Quidem similique distinctio,
-            aliquid repellendus eius consequuntur? Eveniet minima enim pariatur
-            blanditiis accusamus laborum sed ipsam id velit delectus, impedit
-            nam assumenda facere accusantium. Dolorum odit pariatur laboriosam
-            ullam alias id quis! Fugit unde quaerat nemo tempora. Accusantium
-            iste nisi adipisci ex numquam dicta eaque nulla, cumque
-            reprehenderit blanditiis repellendus ipsam. Rerum beatae dolores
-            unde aliquam minus culpa nobis voluptates voluptatum quisquam dicta
-            ullam, enim, delectus adipisci. Error quas dolorem aliquid repellat.
-            Quisquam qui amet adipisci commodi autem labore, similique natus
-            nemo ab dicta expedita hic dolor modi maiores facilis ad suscipit
-            quasi aspernatur atque recusandae eveniet. Sed accusantium
-            perspiciatis sequi minima eaque officia architecto, deserunt minus
-            voluptatum nemo repellat dicta unde totam quibusdam nulla corrupti
-            aliquid necessitatibus rem, quos molestias vel? Totam veniam
-            sapiente recusandae mollitia.
-          </Text>  */}
+          
         <View style={styles.textContainer}>
           <Text style={styles.title}>{detail.product_name}</Text>
           <View style={styles.priceWrapper}>
@@ -104,33 +78,7 @@ const BottomNavigator: React.FC<BottomNavigatorProps> = ({detail}) => {
 
           <View>{sizes}</View>
         </View>
-   <Text>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad sequi
-            culpa error sapiente tenetur enim cupiditate corporis incidunt
-            consequatur ipsam ut, necessitatibus expedita voluptas? Fugiat
-            debitis ad sit mollitia earum! Veritatis quis quia deserunt
-            assumenda recusandae incidunt sapiente a amet impedit nemo natus et
-            sequi rem illo totam, voluptates nesciunt pariatur? Enim eveniet
-            earum voluptas repellat, corporis itaque quas quis! Id, nisi
-            accusantium. Quibusdam, cum autem blanditiis repellat, delectus
-            consequatur, laborum non quo voluptates obcaecati quas quasi porro.
-            Ex corrupti iure expedita mollitia. Quidem similique distinctio,
-            aliquid repellendus eius consequuntur? Eveniet minima enim pariatur
-            blanditiis accusamus laborum sed ipsam id velit delectus, impedit
-            nam assumenda facere accusantium. Dolorum odit pariatur laboriosam
-            ullam alias id quis! Fugit unde quaerat nemo tempora. Accusantium
-            iste nisi adipisci ex numquam dicta eaque nulla, cumque
-            reprehenderit blanditiis repellendus ipsam. Rerum beatae dolores
-            unde aliquam minus culpa nobis voluptates voluptatum quisquam dicta
-            ullam, enim, delectus adipisci. Error quas dolorem aliquid repellat.
-            Quisquam qui amet adipisci commodi autem labore, similique natus
-            nemo ab dicta expedita hic dolor modi maiores facilis ad suscipit
-            quasi aspernatur atque recusandae eveniet. Sed accusantium
-            perspiciatis sequi minima eaque officia architecto, deserunt minus
-            voluptatum nemo repellat dicta unde totam quibusdam nulla corrupti
-            aliquid necessitatibus rem, quos molestias vel? Totam veniam
-            sapiente recusandae mollitia.
-          </Text> 
+ 
      
      
       </BottomSheetScrollView>
@@ -149,7 +97,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flexGrow: 1,
-    backgroundColor: colors.darkOrange,
+    backgroundColor: colors.white,
   },
   title: {
     fontSize: 19,
@@ -212,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomNavigator;
+export default ProductDetails;

@@ -13,13 +13,13 @@ import Cart from '../../components/Cart/Cart';
 import {CartContext} from '../../context/CartContext';
 import {globalStyles} from '../../styles/globalStyle';
 import {useNavigation} from '@react-navigation/native';
-import BottomNavigator from '../../components/ProductDetails/ProductDetails';
-import AddToCart from '../../container/AddToCart/AddToCart';
+import AddToCart from '../AddToCart/AddToCart';
 import Icon from '../../components/Icon/Icon';
-import {Header} from '../../container/Header/Header';
+import {Header} from '../Header/Header';
+import ProductDetails from '../../components/ProductDetails/ProductDetails';
 
-export const Product = ({route, navigation}) => {
-  const {detail} = route.params;
+export const Product = ({detail, navigation}) => {
+
   const {addToCart} = useContext(CartContext);
   const navigatione = useNavigation();
   console.log(navigation.openD);
@@ -57,7 +57,7 @@ export const Product = ({route, navigation}) => {
       />
       <ImageBackground source={{uri: detail.modelImg}} style={styles.img} />
 
-      <BottomNavigator detail={detail} />
+      <ProductDetails detail={detail} />
 
       <AddToCart onAddToCartHandler={onAddToCartHandler} />
     </ScrollView>
