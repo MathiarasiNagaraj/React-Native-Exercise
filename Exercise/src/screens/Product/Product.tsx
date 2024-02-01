@@ -1,15 +1,8 @@
-import BottomSheet from '@gorhom/bottom-sheet';
 import {
-  FlatList,
-  Image,
   ImageBackground,
-  ImageBackgroundBase,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
 } from 'react-native';
 
 import {useContext} from 'react';
@@ -18,29 +11,29 @@ import LeftArrowSVG from '../../assets/images/icons/leftArrow.svg';
 
 import Cart from '../../components/Cart/Cart';
 import {CartContext} from '../../context/CartContext';
-import {colors} from '../../styles/colors';
 import {globalStyles} from '../../styles/globalStyle';
-import {HOME} from '../../messages/CommonMessages';
 import {useNavigation} from '@react-navigation/native';
 import BottomNavigator from '../../components/ProductDetails/ProductDetails';
 import AddToCart from '../../container/AddToCart/AddToCart';
 import Icon from '../../components/Icon/Icon';
 import {Header} from '../../container/Header/Header';
-import {TITLE} from '../../constants/commonConstants';
 
-export const Product = ({route}) => {
+export const Product = ({route, navigation}) => {
   const {detail} = route.params;
   const {addToCart} = useContext(CartContext);
-  const navigation = useNavigation();
+  const navigatione = useNavigation();
+  console.log(navigation.openD);
 
   const handleBackClick = () => {
-    navigation.goBack();
+    navigatione.goBack();
   };
 
   const onAddToCartHandler = () => {
     addToCart(detail.id);
   };
-
+  const handleDrawerOpen = () => {
+    navigation.toggleDrawer();
+  };
   return (
     <ScrollView>
       <Header
@@ -49,12 +42,20 @@ export const Product = ({route}) => {
             <Icon icon={<LeftArrowSVG />} style={globalStyles.whiteIcon} />
           </TouchableOpacity>
         }
-        cart={<Icon icon={<Cart />} style={globalStyles.whiteIcon} />}
+        cart={
+          <Icon
+            icon={
+              <TouchableOpacity onPress={handleDrawerOpen}>
+                <Cart navigation={navigation} />
+              </TouchableOpacity>
+            }
+            style={globalStyles.whiteIcon}
+          />
+        }
         title={undefined}
         style={globalStyles.transparentBg(0)}
       />
       <ImageBackground source={{uri: detail.modelImg}} style={styles.img} />
-    
 
       <BottomNavigator detail={detail} />
 

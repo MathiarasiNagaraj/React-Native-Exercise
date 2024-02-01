@@ -6,30 +6,22 @@ import {Home} from './src/screens/Home/Home';
 import {Product} from './src/screens/Product/Product';
 import {CartProvider} from './src/context/CartContext';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Stack = createNativeStackNavigator();
+ const Drawer = createDrawerNavigator();
 const App = () => {
   return (
-    <CartProvider>
-      <GestureHandlerRootView style={{flex:1}}>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <CartProvider>
         <NavigationContainer>
-          <Stack.Navigator
-          
-          screenOptions={{headerShown:false,orientation:'portrait'}}>
-            <Stack.Screen
-              name="Home"
-              component={Home}
-             
-            />
-            <Stack.Screen
-              name="Product"
-              component={Product}
-      
-            />
-          </Stack.Navigator>
+        <Drawer.Navigator initialRouteName="Main" screenOptions={{headerShown:false}}>
+            <Drawer.Screen name="Main" component={Home} />
+            <Drawer.Screen name="Product" component={Product} />
+       
+          </Drawer.Navigator>
         </NavigationContainer>
-      </GestureHandlerRootView>
-    </CartProvider>
+      </CartProvider>
+    </GestureHandlerRootView>
   );
 };
 

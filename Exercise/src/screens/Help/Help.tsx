@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const ProductGallery = () => {
+const Help = () => {
   return (
       <View>
-          <Text>Product gallery screen</Text>
+          <Text>Help page</Text>
 </View>
   )
 }
 
-export default ProductGallery
+export default Help

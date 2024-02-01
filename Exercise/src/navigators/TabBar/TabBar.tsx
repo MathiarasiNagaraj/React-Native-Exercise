@@ -24,14 +24,14 @@ export const TabBar = ({ tabContentComponent }) => {
       style={{marginTop:70}}
       screenOptions={{
         tabBarLabelStyle: {
-          fontSize: 18,
+          fontSize: 17,
           fontWeight: '500',
           fontFamily: 'Poppins-Medium',
           textTransform: 'capitalize',
         },
         tabBarScrollEnabled:true,
         tabBarItemStyle: {
-          width: 110,
+          width: 98,
         
         },
         tabBarActiveTintColor: colors.black,

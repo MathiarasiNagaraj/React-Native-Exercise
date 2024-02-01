@@ -1,8 +1,4 @@
 import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import ProductGallery from '../../screens/ProductGallery/ProductGallery';
-import MyCart from '../../screens/MyCart/MyCart';
-import {SCREEN} from '../../constants/commonConstants';
 
 import { Button, Text } from 'react-native';
 import { Drawer } from 'react-native-drawer-layout';

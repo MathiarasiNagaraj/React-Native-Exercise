@@ -35,18 +35,18 @@ const MainSection: React.FC<MainSectionProps> = ({category}) => {
   }, [category]);
 
   return (
-    <>
+   
       <ScrollView showsVerticalScrollIndicator={false}>
-    
+     
       <OfferSection offers={selectedOffers} />
       <ProductSection selectedProduct={selectedProduct} />
-
+    
       </ScrollView> 
-      <BottomNavigator />
+      
      
        
  
-      </>
+   
   );
 };
 

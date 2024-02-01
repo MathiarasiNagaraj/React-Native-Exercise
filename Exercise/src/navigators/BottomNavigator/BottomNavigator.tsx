@@ -1,18 +1,17 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Cart from '../../components/Cart/Cart';
-import MainSection from '../../container/MainSection/MainSection';
+import {StyleSheet, Text} from 'react-native';
 import {colors} from '../../styles/colors';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {BOTTOM_TABS, SCREEN} from '../../constants/commonConstants';
+import {BOTTOM_TABS} from '../../constants/commonConstants';
 import {Alert, Animated, TouchableOpacity} from 'react-native';
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Product } from '../../screens/Product/Product';
-import { Home } from '../../screens/Home/Home';
 import TopSection from '../../container/TopSection/TopSection';
+import WishList from '../../screens/WishList/WishList';
+import Help from '../../screens/Help/Help';
+import Profile from '../../screens/Profile/Profile';
+
 const BottomNavigator = () => {
-  const _renderIcon = (routeName, selectedTab) => {
+  const renderIcon = (routeName, selectedTab) => {
     let icon = '';
 
     switch (routeName) {
@@ -23,10 +22,10 @@ const BottomNavigator = () => {
         icon = 'heart';
         break;
       case 'Help':
-        icon = 'help-circle'
+        icon = 'help-circle';
         break;
       case 'Profile':
-        icon = 'account-circle'
+        icon = 'account-circle';
         break;
     }
 
@@ -43,16 +42,17 @@ const BottomNavigator = () => {
       <TouchableOpacity
         onPress={() => navigate(routeName)}
         style={styles.tabbarItem}>
-        {_renderIcon(routeName, selectedTab)}
-        <Text style={{color:colors.black,fontSize:13}}> {routeName}</Text>
+        {renderIcon(routeName, selectedTab)}
+        <Text style={{color: colors.black, fontSize: 13}}> {routeName}</Text>
       </TouchableOpacity>
     );
   };
   const tabItems = BOTTOM_TABS.map(items => (
     <CurvedBottomBar.Screen
+      key={items.name}
       name={items.name}
       position={items.position}
-      component={() => <TopSection/>}
+      component={items.component}
     />
   ));
   return (
@@ -64,6 +64,7 @@ const BottomNavigator = () => {
       bgColor="white"
       initialRouteName="title1"
       borderTopLeftRight={false}
+      screenOptions={{headerShown: false}}
       renderCircle={({selectedTab, navigate}) => (
         <Animated.View style={styles.btnCircleUp}>
           <TouchableOpacity
@@ -74,7 +75,8 @@ const BottomNavigator = () => {
         </Animated.View>
       )}
       tabBar={renderTabBar}>
-      {tabItems}
+   {tabItems}
+    
     </CurvedBottomBar.Navigator>
   );
 };
@@ -88,10 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
 
-  bottomBar: {
-    //  marginBottom: 200,
-    // paddingBottom:100
-  },
   btnCircleUp: {
     width: 60,
     height: 60,
